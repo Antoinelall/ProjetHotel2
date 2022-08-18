@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[Client]
+(
+	IdClient INT IDENTITY,
+	Pseudo NVARCHAR(50) NOT NULL,
+   Nom NVARCHAR(50) NULL,
+   Prenom NVARCHAR(50) NULL,
+   Email NVARCHAR(250) NOT NULL,
+   [MDPHash] NVARCHAR(100) NOT NULL,
+   PRIMARY KEY(IdClient) ,
+   
+
+)

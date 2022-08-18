@@ -1,0 +1,66 @@
+﻿@using ProjetHotel.Infrastructure
+
+@* Ceci est une injection de dépendence, dans un fichier Razor *@
+@inject SessionManager sessionManager
+
+@model IEnumerable<ProjetHotel.Models.Hotel>
+
+@{
+    ViewData["Title"] = "Hotel list";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To The ProjetHotel</h1>
+</div>
+@*<h2>@(string.IsNullOrWhiteSpace(sessionManager.Pseudo) ? "Welcome" : sessionManager.Pseudo)</h2>*@
+<h2>@(sessionManager?.User?.Pseudo ?? "Welcome")</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHotel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NBChambre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ville)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdHotel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NBChambre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ville)
+            </td>
+
+            <td>
+                <a class ="text-primary " asp-controller="Calendar" asp-action="Calendar" asp-route-id ="@item.IdHotel" >
+                    <i class="bi bi-search"> Réserver </i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>_

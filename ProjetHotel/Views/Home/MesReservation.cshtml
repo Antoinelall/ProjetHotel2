@@ -1,0 +1,55 @@
+﻿@using ProjetHotel.Infrastructure
+
+@model IEnumerable<ProjetHotel.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Mes Reservation";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Mes Reservation</h1>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateArrivee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDepart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NBNuit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdHotel)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) 
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateArrivee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateDepart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NBNuit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdHotel)
+                    </td>
+                    <td>
+                        <a class = "btn btn-outline-dark" asp-action="Delete" asp-controller="Home" asp-route-id=@item.IdReservation >Supprimer</a>
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>_
+<img src="http://www.hervekabla.com/wordpress/wp-content/uploads/2019/10/ROOM_331_001-1.2-1024x576.jpg" alt="Hotel" class="mx-auto d-block" >

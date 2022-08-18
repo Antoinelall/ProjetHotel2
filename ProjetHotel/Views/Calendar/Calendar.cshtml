@@ -1,0 +1,71 @@
+﻿@model ReservationForm
+
+<form method="post">
+
+    <button type="submit" value="model" class="btn btn-primary">Réserver</button>
+
+    <div class="mb-2">
+        @Html.LabelFor(model => model.Type)
+        @Html.DropDownListFor(m => m.Type, Html.GetEnumSelectList<TypeCh>(), null, new {@class= "form-control"} )
+        @Html.ValidationMessageFor(model => model.Type, null, new {@class="text-danger"})
+    </div>
+
+    <div>
+        @* Ajouter les valeur selectionné par le "fullcalendar" dans des inputs *@
+        <input type="date" asp-for=DateDepart id="DateDepart" readonly="true" />
+        <input type="date" asp-for=DateArrivee id="DateArrivee" readonly="true" />
+        <input type="hidden" asp-for=IdHotel id="IdHotel" readonly="true" />
+        <input type="hidden" asp-for=IdClient id="IdClient" readonly="true" />
+    </div>
+
+    <div id='calendar'></div>
+</form>
+
+
+
+
+@section CSS{
+<link href='~/lib/fullcalendar-5.11.0/main.css' rel='stylesheet' />
+}
+
+@section Scripts {
+<script src='~/lib/fullcalendar-5.11.0/main.js'></script>
+<script src='fullcalendar/core/main.js'></script>
+<script src='fullcalendar/core/locales/fr.js'></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+
+    const inputDateDepart = document.getElementById('DateDepart');
+    const inputDateArrivee = document.getElementById('DateArrivee');
+
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'fr',
+            initialView: 'dayGridMonth',
+            weekNumberCalculation  :'ISO',
+            selectable: true,
+
+            //        dateClick: function(info) {
+            //  alert('clicked ' + info.dateStr);
+            //},
+            select: function(info) {
+
+              inputDateDepart.value = info.startStr;
+              inputDateArrivee.value = info.endStr;
+
+
+            }
+
+        });
+        calendar.render();
+    });
+
+
+
+
+
+
+</script>
+}

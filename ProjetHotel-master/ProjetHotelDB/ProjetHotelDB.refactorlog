@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="debc7232-4481-4915-99fe-2ead6ef0a8cc" ChangeDateTime="07/01/2022 08:02:09">
+    <Property Name="ElementName" Value="[dbo].[Client].[MDP]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MDPHash" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="677e7171-bd53-40b6-a60f-28136a351dd2" ChangeDateTime="07/11/2022 07:33:59">
+    <Property Name="ElementName" Value="[dbo].[Reservation].[NBNuit]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Reservation]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NBNuit" />
+  </Operation>
+</Operations>
